@@ -21,6 +21,10 @@ public interface AnalogMapper {
             @Result(property = "createUser", column = "create_user"),
             @Result(property = "updateDate", column = "update_date"),
             @Result(property = "updateUser", column = "update_user"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "error1", column = "error1"),
+            @Result(property = "error2", column = "error2"),
+            @Result(property = "error3", column = "error3"),
 
     })
     //查询-根据路径
@@ -32,9 +36,17 @@ public interface AnalogMapper {
             "</script>"})
     List<AnalogInfo> queryByPath(@Param("path") String path);
     //查询所有
-    @Select({"SELECT * FROM analog_info"})
+    @Select({"<script>" +
+            "SELECT * FROM analog_info WHERE 1=1" +
+            "<if test='path != null '>" +
+            "and path like CONCAT('%',#{path},'%')" +
+            "</if>" +
+            "<if test='nameChina != null '>" +
+            "and name_china like CONCAT('%',#{nameChina},'%')" +
+            "</if>" +
+            "</script>"})
     @ResultMap("analog")
-    List<AnalogInfo> queryAllPath();
+    List<AnalogInfo> queryAllPath(AnalogInfo analogInfo);
     //新增
     @Insert({"<script>"+
             "insert into analog_info " +
@@ -116,6 +128,10 @@ public interface AnalogMapper {
             "return_code = #{returnCode}," +
             "</if>" +
 
+            "<if test='status != null '>" +
+            "status = #{status}," +
+            "</if>" +
+
             "<if test='updateDate != null '>" +
             "update_date = #{updateDate}," +
             "</if>" +
@@ -123,6 +139,19 @@ public interface AnalogMapper {
             "<if test='updateUser != null '>" +
             "update_user = #{updateUser}," +
             "</if>" +
+
+            "<if test='error1 != null '>" +
+            "error1 = #{error1}," +
+            "</if>" +
+
+            "<if test='error2 != null '>" +
+            "error2 = #{error2}," +
+            "</if>" +
+
+            "<if test='error3 != null '>" +
+            "error3 = #{error3}," +
+            "</if>" +
+
             "</trim>" +
             "where id = #{id}" +
             "</script>"})
@@ -130,6 +159,8 @@ public interface AnalogMapper {
     //删除
     @Delete({"delete from analog_info where id =#{id}"})
     int deleteAnalogInfo(@Param("id") BigInteger id);
+
+
 
 
 }

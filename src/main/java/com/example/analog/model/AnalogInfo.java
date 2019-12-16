@@ -1,5 +1,7 @@
 package com.example.analog.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.math.BigInteger;
 import java.sql.Date;
 
@@ -16,13 +18,25 @@ public class AnalogInfo {
     //RETURN
     private String returnCode;
     //create_date
+    @JSONField(format = "yyyy-MM-dd")
     private Date createDate;
     //create_user
     private String createUser;
     //update_date
+    @JSONField(format = "yyyy-MM-dd")
     private Date updateDate;
     //update_user
     private String updateUser;
+    //status
+    private Integer status;
+    //error1
+    private String error1;
+    //error2
+    private String error2;
+    //error3
+    private String error3;
+
+
 
     public AnalogInfo() {
     }
@@ -37,6 +51,54 @@ public class AnalogInfo {
         this.createUser = createUser;
         this.updateDate = updateDate;
         this.updateUser = updateUser;
+    }
+
+    public AnalogInfo(BigInteger id, String nameChina, String nameEnglish, String path, String returnCode, Date createDate, String createUser, Date updateDate, String updateUser, Integer status, String error1, String error2, String error3) {
+        this.id = id;
+        this.nameChina = nameChina;
+        this.nameEnglish = nameEnglish;
+        this.path = path;
+        this.returnCode = returnCode;
+        this.createDate = createDate;
+        this.createUser = createUser;
+        this.updateDate = updateDate;
+        this.updateUser = updateUser;
+        this.status = status;
+        this.error1 = error1;
+        this.error2 = error2;
+        this.error3 = error3;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getError1() {
+        return error1;
+    }
+
+    public void setError1(String error1) {
+        this.error1 = error1;
+    }
+
+    public String getError2() {
+        return error2;
+    }
+
+    public void setError2(String error2) {
+        this.error2 = error2;
+    }
+
+    public String getError3() {
+        return error3;
+    }
+
+    public void setError3(String error3) {
+        this.error3 = error3;
     }
 
     public BigInteger getId() {

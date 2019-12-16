@@ -36,6 +36,26 @@ public class AnalogInfoServiceImpl implements AnalogInfoService {
     }
 
     @Override
+    public String queryAllPath(AnalogInfo analogInfo) {
+        int i = 0;
+        Map<String,Object> map = new HashMap<>();
+        try{
+            List<AnalogInfo> list = analogMapper.queryAllPath(analogInfo);
+            for (int j = 0; j < list.size(); j++) {
+                LOG.info("查询结果："+list.get(j).toString());
+            }
+            map.put("list",list);
+            map.put("status","S");
+        } catch (Exception e){
+            e.printStackTrace();
+            LOG.error("查询接口信息失败");
+            map.put("status","E");
+        }
+
+        return JSON.toJSONString(map);
+    }
+
+    @Override
     public String addAnalogInfo(AnalogInfo analogInfo) {
         int i = 0;
         Map<String,String> map = new HashMap<>();

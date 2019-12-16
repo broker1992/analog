@@ -10,6 +10,9 @@ public interface AnalogInfoService {
     //按照路径 查询出
     List<AnalogInfo> queryByPath(String path);
 
+    //查询所有+条件查询
+    String queryAllPath(AnalogInfo analogInfo);
+
     //新增接口
     String addAnalogInfo(AnalogInfo analogInfo);
 
