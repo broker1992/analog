@@ -20,7 +20,9 @@ public class WebConfigurer implements WebMvcConfigurer {
                         "/webjars/**",
                         "/v2/**",
                         "/swagger-ui.html/**",
-                        "/analog/**"
+                        "/analog/**",
+                        "/static/**",
+                        "/index.html"
                 );
     }
 }

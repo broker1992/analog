@@ -1,6 +1,7 @@
 package com.example.analog.service;
 
 import com.example.analog.model.AnalogInfo;
+import com.example.analog.model.DownloadParam;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -21,5 +22,6 @@ public interface AnalogInfoService {
 
     //删除接口
     String deleteAnalogInfo(BigInteger id);
+
 
 }

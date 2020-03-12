@@ -3,6 +3,7 @@ package com.example.analog.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.example.analog.dao.AnalogMapper;
 import com.example.analog.model.AnalogInfo;
+import com.example.analog.model.DownloadParam;
 import com.example.analog.service.AnalogInfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -124,4 +125,6 @@ public class AnalogInfoServiceImpl implements AnalogInfoService {
         }
         return JSON.toJSONString(map);
     }
+
+
 }

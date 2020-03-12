@@ -1,6 +1,7 @@
 package com.example.analog.controller;
 
 import com.example.analog.model.AnalogInfo;
+import com.example.analog.model.DownloadParam;
 import com.example.analog.service.AnalogInfoService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +38,8 @@ public class AnalogController {
     public String queryAnalog(@RequestBody AnalogInfo analogInfo){
         return analogInfoService.queryAllPath(analogInfo);
     }
+
+
+
+
 }
